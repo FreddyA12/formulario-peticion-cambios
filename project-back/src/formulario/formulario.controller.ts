@@ -11,8 +11,8 @@ export class FormularioController {
         return await this.formularioService.getAll();
     }
 
-    @Get()
-    async getById(@Query('id') id: number) {
+    @Get('/:id')
+    async getById(@Param('id') id: number) {
         return await this.formularioService.getById(id);
     }
 
@@ -21,14 +21,14 @@ export class FormularioController {
         return await this.formularioService.save(formulario);
     }
 
-    @Patch('/update')
-    async update(@Query('id') id: number, @Body() formulario: any) {
+    @Patch('/update/:id')
+    async update(@Param('id') id: number, @Body() formulario: any) {
         return await this.formularioService.update(id, formulario);
     }
 
     // Métodos para obtener formularios ordenados
-    @Get("/ordenados")
-    async getOrdered(@Query('por') por: string): Promise<Formulario[]> {
+    @Get("/ordenados/:por")
+    async getOrdered(@Param('por') por: string): Promise<Formulario[]> {
         switch (por) {
             case 'prioridad':
                 return this.formularioService.getAllOrdered('prioridad');

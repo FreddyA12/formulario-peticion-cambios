@@ -13,6 +13,7 @@ export class FormularioService {
   ) { }
 
   async getById(id: number) {
+    console.log('hola');
     return await this.formularioRepository.findOne({ where: { numero_de_solicitud: id } })
   }
 
