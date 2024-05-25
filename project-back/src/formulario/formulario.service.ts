@@ -55,4 +55,8 @@ export class FormularioService {
     }
   }
 
+  async delete(id:number){
+    return await this.formularioRepository.delete(id);
+  }
+
 }

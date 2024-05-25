@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Patch, Post, Put, Query } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Put, Query } from '@nestjs/common';
 import { FormularioService } from './formulario.service';
 import { Formulario } from './formulario.entity';
 
@@ -11,7 +11,7 @@ export class FormularioController {
         return await this.formularioService.getAll();
     }
 
-    @Get()
+    @Get('')
     async getById(@Query('id') id: number) {
         return await this.formularioService.getById(id);
     }
@@ -40,6 +40,11 @@ export class FormularioController {
                 return this.formularioService.getAll();
         }
     }
+    @Delete()
+    async eliminar(@Query('id') id:number){
+        return await this.formularioService.delete(id);
+    }
+
     // TODO:
     // traer ordenado por:
     // por prioridad
