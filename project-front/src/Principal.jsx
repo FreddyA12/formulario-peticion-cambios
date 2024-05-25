@@ -3,7 +3,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './principal.css'; // Importa tu archivo CSS personalizado si es necesario
 
-const Principal = () => {
+const Principal = ({ setShowFormulario }) => {
   return (
     <div className="container">
       {/* Fila superior con el encabezado */}
@@ -52,8 +52,8 @@ const Principal = () => {
       </div>
       {/* Fila inferior con el botón de crear */}
       <div className="row justify-content-center">
-        <div className="col-12">
-          <button className="btn btn-success btn-custom">Crear</button>
+        <div className="col-12 text-center">
+          <button className="btn btn-success btn-lg w-50" onClick={() => setShowFormulario(true)}>Crear</button>
         </div>
       </div>
     </div>

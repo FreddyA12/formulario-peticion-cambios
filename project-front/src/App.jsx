@@ -1,11 +1,18 @@
 // src/App.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import Principal from './Principal';
+import Formulario from './Formulario';
 
 function App() {
+  const [showFormulario, setShowFormulario] = useState(false);
+
   return (
     <div className="App">
-      <Principal />
+      {showFormulario ? (
+        <Formulario setShowFormulario={setShowFormulario} />
+      ) : (
+        <Principal setShowFormulario={setShowFormulario} />
+      )}
     </div>
   );
 }
