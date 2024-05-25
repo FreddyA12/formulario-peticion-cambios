@@ -1,35 +1,54 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
+import Formulario from './component/Formulario';
+import React, { useState } from 'react';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [mostrarFormulario, setMostrarFormulario] = useState(false);
+
+  const handleMostrarFormulario = () => {
+    setMostrarFormulario(true);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <section>
+      <div className="container-fluid">
+        <div className="row mt-5">
+          <div className="col-12 text-center">
+            <h1>FORMULARIOS DE PETICION DE CAMBIOS</h1>
+          </div>
+        </div>
+        {!mostrarFormulario && (
+          <div className="row mt-3">
+            <div className="col-10 offset-1">
+              <table className="table">
+                <thead>
+                  <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Email</th>
+                    <th>Teléfono</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {/* Aquí puedes agregar filas de datos si es necesario */}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+        {!mostrarFormulario && (
+          <div className="row mt-3">
+            <div className="col-12 text-center">
+              <button className="btn btn-primary" onClick={handleMostrarFormulario}>Mostrar Formulario</button>
+            </div>
+          </div>
+        )}
+        {mostrarFormulario && <Formulario />}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </section>
+  );
 }
 
-export default App
+export default App;
