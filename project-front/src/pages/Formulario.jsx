@@ -110,7 +110,7 @@ const Formulario = ({ setShowFormulario, formularioId }) => {
         await axios.patch(`http://localhost:3000/formulario/update/${formularioId}`, formularioData);
         Swal.fire({
           title: '<strong>Registro Exitoso</strong>',
-          html: '<i>El formulario se ha guardado con éxito</i>',
+          html: '<i>El formulario se ha editado con éxito</i>',
           icon: 'success',
         });
       } catch (error) {
