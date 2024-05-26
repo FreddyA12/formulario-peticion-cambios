@@ -3,52 +3,52 @@ import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 @Entity({ name: 'formularios' })
 export class Formulario {
   @PrimaryGeneratedColumn()
-  numero_de_solicitud: number;
+  id: number;
 
-  @Column({ type: 'date' })
+  @Column({ type: 'varchar', length: 100 , nullable: false})
+  nombre_proyecto: string;
+
+  @Column({ type: 'date', nullable: false })
   fecha_solicitud: Date;
 
-  @Column({ type: 'varchar', length: 10 })
+  @Column({ type: 'varchar', length: 10 , nullable: false})
   prioridad: string;
 
-  @Column({ type: 'varchar', length: 255 })
+  @Column({ type: 'varchar', length: 255, nullable: false })
   nombre_cambio: string;
 
-  @Column({ type: 'varchar', length: 100 })
+  @Column({ type: 'varchar', length: 100, nullable: false })
   nombre_solicitante: string;
 
-  @Column({ type: 'varchar', length: 100, nullable: true })
+  @Column({ type: 'varchar', length: 100, nullable: false })
   repositorio: string;
 
-  @Column({ type: 'varchar', length: 100, nullable: true })
-  issue: string;
+  @Column({ type: 'varchar', length: 100, nullable: false })
+  categoria_cambio: string;
 
-  @Column({ type: 'varchar', length: 100 })
-  categoria_del_cambio: string;
-
-  @Column({ type: 'varchar', length: 255 })
+  @Column({ type: 'varchar', length: 255 , nullable: false})
   causa_cambio: string;
 
-  @Column({ type: 'varchar', length: 255 })
+  @Column({ type: 'varchar', length: 255, nullable: false })
   descripcion_cambio: string;
 
-  @Column({ type: 'varchar', length: 255 })
+  @Column({ type: 'varchar', length: 255, nullable: false })
   razon_cambio: string;
 
-  @Column({ type: 'varchar', length: 255 })
+  @Column({ type: 'varchar', length: 255, nullable: false })
   impacto_cambio: string;
 
-  @Column({ type: 'varchar', length: 255 })
+  @Column({ type: 'varchar', length: 255 , nullable: false})
   justificacion_cambio: string;
 
-  @Column({ type: 'varchar', length: 100 })
+  @Column({ type: 'varchar', length: 100, nullable: false })
   duracion: string;
 
-  @Column({ type: 'varchar', length: 255 })
+  @Column({ type: 'varchar', length: 255, nullable: false })
   evaluaciones: string;
 
-  @Column({ type: 'varchar', length: 255 })
-  implicaciones_de_recursos: string;
+  @Column({ type: 'varchar', length: 255 , nullable: false})
+  implicacion_recursos: string;
 
   @Column({ type: 'varchar', length: 255 })
   recomendaciones: string;
@@ -57,11 +57,11 @@ export class Formulario {
   comentarios: string;
 
   @Column({ type: 'varchar', length: 100 })
-  nombre_del_aprobante: string;
+  nombre_aprobante: string;
 
   @Column({ type: 'date' })
-  fecha_de_aprobacion: Date;
+  fecha_aprobacion: Date;
 
-  @Column({ type: 'varchar', length: 10 })
+  @Column({ type: 'varchar', length: 10, nullable: false })
   estado: string;
 }
