@@ -7,8 +7,8 @@ function App() {
   const [showFormulario, setShowFormulario] = useState(false);
   const [formularioId, setFormularioId] = useState(null);
 
-  const handleShowFormulario = (id = null) => {
-    setFormularioId(id);
+  const handleShowFormulario = () => {
+    console.log(formularioId);
     setShowFormulario(true);
   };
 
@@ -17,7 +17,7 @@ function App() {
       {showFormulario ? (
         <Formulario setShowFormulario={setShowFormulario} formularioId={formularioId} />
       ) : (
-        <Principal setShowFormulario={handleShowFormulario} />
+        <Principal setShowFormulario={handleShowFormulario} setFormularioId={setFormularioId} />
       )}
     </div>
   );

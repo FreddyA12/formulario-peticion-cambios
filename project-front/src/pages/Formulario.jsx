@@ -11,7 +11,7 @@ const Formulario = ({ setShowFormulario, formularioId }) => {
   const [repositorio, setRepositorio] = useState('');
   const [nombre_solicitante, setNombreSolicitante] = useState('');
   const [fecha_solicitud, setFechaSolicitud] = useState('');
-  const [prioridad, setPrioridad] = useState('');
+  const [prioridad, setPrioridad] = useState('Alta');
   const [categoria_cambio, setCategoriaCambio] = useState('');
   const [causa_cambio, setCausaCambio] = useState('');
   const [descripcion_cambio, setDescripcionCambio] = useState('');
@@ -52,7 +52,7 @@ const Formulario = ({ setShowFormulario, formularioId }) => {
         setNombreAprobacion(form.nombre_aprobante || '');
         setFechaAprobacion(form.fecha_aprobacion || '');
         setDuracion(form.duracion || '');
-        setId(form.id || '')
+        setId(form.id || null)
       } catch (error) {
         console.error('Error al obtener el formulario:', error);
       }
@@ -87,12 +87,12 @@ const Formulario = ({ setShowFormulario, formularioId }) => {
       duracion,
       implicacion_recursos,
       estado: "Pendiente",
-      id
     };
-
 
     if (!formularioId) {
       try {
+        formularioData.id = null;
+        if (!formularioData.fecha_aprobacion) formularioData.fecha_aprobacion = null;
         await axios.post('http://localhost:3000/formulario', formularioData);
         Swal.fire({
           title: '<strong>Registro Exitoso</strong>',
@@ -110,7 +110,7 @@ const Formulario = ({ setShowFormulario, formularioId }) => {
         await axios.patch(`http://localhost:3000/formulario/update/${formularioId}`, formularioData);
         Swal.fire({
           title: '<strong>Registro Exitoso</strong>',
-          html: '<i>El formulario se ha guardado con éxito</i>',
+          html: '<i>El formulario se ha editado con éxito</i>',
           icon: 'success',
         });
       } catch (error) {

@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../css/principal.css";
 import Swal from "sweetalert2";
 
-const Principal = ({ setShowFormulario }) => {
+const Principal = ({ setShowFormulario, setFormularioId }) => {
   const [formularios, setFormularios] = useState([]);
   const [selectedRow, setSelectedRow] = useState(null);
   const [ordenarPor, setOrdenarPor] = useState("");
@@ -40,6 +40,7 @@ const Principal = ({ setShowFormulario }) => {
   const handleEditClick = () => {
     if (selectedRow !== null) {
       setShowFormulario(selectedRow);
+      setFormularioId(selectedRow);
     } else {
       Swal.fire({
         html: "<i>Seleccione un formulario por favor...</i>",

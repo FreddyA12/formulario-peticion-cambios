@@ -9,13 +9,33 @@ export class FormularioService {
   constructor(
     @InjectRepository(Formulario)
     private formularioRepository: Repository<Formulario>,
-  ) {}
+  ) { }
 
   async getById(id: number) {
     return await this.formularioRepository.findOne({ where: { id: id } });
   }
 
   async save(formularioData: any) {
+    if (
+      !formularioData.nombre_proyecto ||
+      !formularioData.prioridad ||
+      !formularioData.nombre_cambio ||
+      !formularioData.nombre_solicitante ||
+      !formularioData.repositorio ||
+      !formularioData.categoria_cambio ||
+      !formularioData.causa_cambio ||
+      !formularioData.descripcion_cambio ||
+      !formularioData.razon_cambio ||
+      !formularioData.impacto_cambio ||
+      !formularioData.justificacion_cambio ||
+      !formularioData.duracion ||
+      !formularioData.evaluaciones ||
+      !formularioData.implicacion_recursos ||
+      !formularioData.estado ||
+      !formularioData.fecha_solicitud
+    ) {
+      throw new BadRequestException('Campos vacios');
+    }
     return await this.formularioRepository.save(formularioData);
   }
 
@@ -39,10 +59,12 @@ export class FormularioService {
       !formularioData.duracion ||
       !formularioData.evaluaciones ||
       !formularioData.implicacion_recursos ||
-      !formularioData.estado
+      !formularioData.estado ||
+      !formularioData.fecha_solicitud
     ) {
       throw new BadRequestException('Campos vacios');
     }
+
     Object.assign(formulario, formularioData);
     return this.formularioRepository.save(formulario);
   }
